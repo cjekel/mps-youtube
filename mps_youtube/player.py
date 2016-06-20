@@ -238,10 +238,11 @@ def _generate_real_playerargs(song, override, stream, isvideo):
 
     if "uiressl=yes" in stream['url'] and "mplayer" in config.PLAYER.get:
         ver = g.mplayer_version
-        # Mplayer too old to support https
-        if not (ver > (1,1) if isinstance(ver, tuple) else ver >= 37294):
-            raise IOError("%s : Sorry mplayer doesn't support this stream. "
-                          "Use mpv or update mplayer to a newer version" % song.title)
+        # ver = 0, perhaps we need to add an assume version is okay if ver == 0
+        ## Mplayer too old to support https
+        #if not (ver > (1,1) if isinstance(ver, tuple) else ver >= 37294):
+        #    raise IOError("%s : Sorry mplayer doesn't support this stream. "
+        #                  "Use mpv or update mplayer to a newer version" % song.title)
 
     # pylint: disable=E1103
     # pylint thinks PLAYERARGS.get might be bool
